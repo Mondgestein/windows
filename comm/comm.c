@@ -156,6 +156,6 @@ int WINAPI ReadCommString(int cid, LPSTR pbuf, int size)
 
 int WINAPI EnableNotification(int cid, HWND hwnd, WORD wInTrigger, WORD wOutTrigger)
 {
-    return 0
+    return 0;
 }
 
