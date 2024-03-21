@@ -24,7 +24,7 @@ int WINAPI LibMain(HINSTANCE hinst, WORD wDataSeg, WORD cbHeapSize, LPSTR lpszCm
 DWORD WINAPI InquireSystem(WORD code, WORD arg)
 {
     if (code == 1)
-        return 3;
+       return _drive_gettype(arg);
 
     return 0;
 }

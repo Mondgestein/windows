@@ -13,6 +13,9 @@
 
 
 
+int __cdecl _drive_gettype(char);
+
+
 DWORD WINAPI InquireSystem(WORD, WORD);
 WORD  WINAPI CreateSystemTimer(WORD, void FAR *);
 WORD  WINAPI KillSystemTimer(WORD);
