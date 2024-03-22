@@ -68,6 +68,11 @@ DWORD WINAPI GetSystemMSecCount(void)
 
 WORD WINAPI Get80x87SaveSize(void)
 {
+    if (_fpu_does_exist())
+    {
+        return FPU_STATE_SIZE;
+    }
+
     return 0;
 }
 
@@ -75,14 +80,14 @@ WORD WINAPI Get80x87SaveSize(void)
 
 void WINAPI Save80x87State(void FAR * state)
 {
-    return;
+    _fpu_save_state(state);
 }
 
 
 
 void WINAPI Restore80x87State(const void FAR * state)
 {
-    return;
+    _fpu_load_state(state);
 }
 
 
