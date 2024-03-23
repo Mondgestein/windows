@@ -24,7 +24,24 @@ int WINAPI LibMain(HINSTANCE hinst, WORD wDataSeg, WORD cbHeapSize, LPSTR lpszCm
 DWORD WINAPI InquireSystem(WORD code, WORD arg)
 {
     if (code == 1)
-       return _drive_gettype(arg);
+    {
+        int drivetype;
+        int drivemap;
+    
+        if (_drive_exists(arg) == 0)
+            return 0;
+
+        if (_drive_is_remote(arg))
+            return DRIVE_REMOTE;
+
+        drivetype = _drive_get_type(arg);
+        drivemap  = _drive_get_map(arg);
+
+        if ((drivemap == 0) || (drivemap == arg + 1))
+            drivetype = drivetype + 2;
+
+        return MAKELONG(drivetype, drivemap);
+    }
 
     return 0;
 }

@@ -19,7 +19,10 @@ int   __cdecl _fpu_does_exist(void);
 void  __cdecl _fpu_load_state(const void __far *);
 void  __cdecl _fpu_save_state(void __far *);
 
-int   __cdecl _drive_gettype(char);
+int   __cdecl _drive_exists(char);
+int   __cdecl _drive_is_remote(char);
+int   __cdecl _drive_get_type(char);
+int   __cdecl _drive_get_map(char);
 
 
 DWORD WINAPI InquireSystem(WORD, WORD);
